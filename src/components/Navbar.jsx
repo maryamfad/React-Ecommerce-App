@@ -5,11 +5,12 @@ import { IoIosArrowBack } from "react-icons/io";
 import { LuShoppingCart } from "react-icons/lu";
 import { FaRegUser } from "react-icons/fa";
 import { BiMenuAltRight } from "react-icons/bi";
+import { assets } from "../assets/assets";
 const Navbar = () => {
 	const [visible, setVisible] = useState(false);
 	return (
 		<div className="flex items-center justify-between py-5 font-medium">
-			<img src="/assets/logo.png" className="w-36" alt="logo" />
+			<img src={assets.logo} className="w-36" alt="logo" />
 			<ul className="hidden sm:flex gap-5 text-sm text-gray-700">
 				<NavLink to="/" className="flex flex-col items-center gap-1">
 					<p>HOME</p>
