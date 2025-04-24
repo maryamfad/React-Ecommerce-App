@@ -9,6 +9,7 @@ import Product from "./pages/Product";
 import PlaceOrder from "./pages/PlaceOrder";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+import Cart from "./pages/Cart";
 
 const App = () => {
 	return (
