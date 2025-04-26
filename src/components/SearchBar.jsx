@@ -22,7 +22,7 @@ const SearchBar = () => {
 				<input
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}
-					className="felx-1 outline-none bg-inherit text-sm"
+					className="flex-1 outline-none bg-inherit text-sm"
 					type="text"
 					placeholder="Search"
 				/>
