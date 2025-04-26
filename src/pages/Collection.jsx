@@ -6,7 +6,7 @@ import ProductItem from "../components/ProductItem";
 const Collection = () => {
 	const { products } = useContext(ShopContext);
 	const [showFilter, setShowFilter] = useState(false);
-	const [filteredProducts, setFilteredProducts] = useState({});
+	const [filteredProducts, setFilteredProducts] = useState([]);
 	const [category, setCategory] = useState([]);
 	const [subCategory, setSubCategory] = useState([]);
 
@@ -30,12 +30,28 @@ const Collection = () => {
 		}
 	};
 
+	const applyFilter = () => {
+		let productsCopy = products.slice();
+		if (category.length > 0) {
+			productsCopy = productsCopy.filter((item) =>
+				category.includes(item.category)
+			);
+		}
+		if (subCategory.length > 0) {
+			productsCopy = productsCopy.filter((item) =>
+				subCategory.includes(item.subCategory)
+			);
+		}
+		setFilteredProducts(productsCopy);
+	};
+
 	useEffect(() => {
 		setFilteredProducts(products);
 	}, []);
+	console.log(filteredProducts);
 	useEffect(() => {
-		console.log(subCategory);
-	}, [subCategory]);
+		applyFilter();
+	}, [category, subCategory]);
 	return (
 		<div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
 			{/* Filter Options */}
@@ -141,7 +157,7 @@ const Collection = () => {
 				</div>
 				{/* Map Products */}
 				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6">
-					{/* {filteredProducts?.map((item, index) => (
+					{filteredProducts?.map((item, index) => (
 						<ProductItem
 							key={index}
 							id={item._id}
@@ -149,7 +165,7 @@ const Collection = () => {
 							name={item.name}
 							price={item.price}
 						/>
-					))} */}
+					))}
 				</div>
 			</div>
 		</div>
