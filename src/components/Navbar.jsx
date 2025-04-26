@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { IoIosArrowBack } from "react-icons/io";
@@ -6,8 +6,10 @@ import { LuShoppingCart } from "react-icons/lu";
 import { FaRegUser } from "react-icons/fa";
 import { BiMenuAltRight } from "react-icons/bi";
 import { assets } from "../assets/assets";
+import { ShopContext } from "../context/ShopContext";
 const Navbar = () => {
 	const [visible, setVisible] = useState(false);
+	const { setShowSearch } = useContext(ShopContext);
 	return (
 		<div className="flex items-center justify-between py-5 font-medium">
 			<Link to={"/"}>
@@ -41,7 +43,10 @@ const Navbar = () => {
 				</NavLink>
 			</ul>
 			<div className="flex items-center gap-6">
-				<IoSearch className="w-5 cursor-pointer" />
+				<IoSearch
+					onClick={() => setShowSearch(true)}
+					className="w-5 cursor-pointer"
+				/>
 				<div className="group relative">
 					<FaRegUser className="w-5 cursor-pointer " />
 					<div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
