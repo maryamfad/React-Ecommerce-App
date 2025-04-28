@@ -45,21 +45,23 @@ const Cart = () => {
 									src={productData.image[0]}
 									alt="item image"
 								/>
-								<div className="grid grid-cols-[5fr_1fr]">
+								<div className="w-full">
 									<p className="text-xs sm:text-lg font-medium">
 										{productData.name}
 									</p>
-									<div className="flex items-center gap-5 mt-2 ">
-										<p>
-											{currency}
-											{productData.price}
-										</p>
+									<div className="flex justify-between items-center gap-4 mt-2">
+										<div className="flex items-center gap-2">
+											<p>
+												{currency}
+												{productData.price}
+											</p>
 
-										<p className="px-2 sm:px-3 sm:py-1 border bg-slate-50">
-											{item.size}
-										</p>
+											<p className="px-2 sm:px-3 sm:py-1 border bg-slate-50">
+												{item.size}
+											</p>
+										</div>
 										<input
-											className="border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1"
+											className="border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1 ml-20"
 											type="number"
 											min={1}
 											defaultValue={item.quantity}
