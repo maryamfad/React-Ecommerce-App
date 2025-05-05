@@ -56,7 +56,8 @@ const ShopContextProvider = (props) => {
 						totalCount += cartItems[items][item];
 					}
 				} catch (error) {
-					console.log(error, "error in cart count");
+					console.log(error);
+					toast.error(error.message);
 				}
 			}
 		}
@@ -67,6 +68,18 @@ const ShopContextProvider = (props) => {
 		let cartData = structuredClone(cartItems);
 		cartData[itemId][size] = quantity;
 		setCartItems(cartData);
+		if (token) {
+			try {
+				await axios.post(
+					backendURL + "/api/cart/update",
+					{ itemId, size, quantity },
+					{ headers: { token } }
+				);
+			} catch (error) {
+				console.log(error);
+				toast.error(error.message);
+			}
+		}
 	};
 
 	const getCartAmount = () => {
