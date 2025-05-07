@@ -81,7 +81,10 @@ const PlaceOrder = () => {
 				default:
 					break;
 			}
-		} catch (error) {}
+		} catch (error) {
+			console.log(error);
+			toast.error(error.message);
+		}
 	};
 	return (
 		<form
