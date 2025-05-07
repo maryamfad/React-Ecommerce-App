@@ -23,7 +23,6 @@ const PlaceOrder = () => {
 		navigate,
 		backendURL,
 		token,
-		currency,
 		deliveryFee,
 		cartItems,
 		getCartAmount,
